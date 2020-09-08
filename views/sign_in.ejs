@@ -1,7 +1,7 @@
 <h1>sign in</h1>
 
-<form action="users/create_session" method="POST">
-    <label for="email_id">Email</label>
+<form action="/users/create_session" method="POST">                                 <!-- the tab before users is important.-->
+    <label for="email_id">Email</label>                            <!--else it will be taken as users/users/create_session.-->
     <input type="email" id="email_id" name="email" placeholder="Email" required>
     <br>
     <label for="password">Password</label>
