@@ -13,7 +13,11 @@
   "author": "akhil (codingninjas)",
   "license": "ISC",
   "dependencies": {
+    "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.5",
-    "express-ejs-layouts": "^2.5.0"
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
   }
 }

@@ -7,17 +7,32 @@ module.exports.users = function(req, res){
 }
 
 module.exports.sign_up = function(req, res){
+    if(req.isAuthenticated())
+        return res.redirect('/');
     return res.render('sign_up',{
         title: 'codeial / sign_up'
     });
 }
 
 module.exports.sign_in = function(req, res){
+    if(req.isAuthenticated())
+    {
+        console.log('request came here');
+        return res.redirect('/');
+    }
     return res.render('sign_in',{
         title: 'codeial / sign_in'
     });
 }
-
+module.exports.profile = function(req, res){
+    return res.render('profile',{
+        title: 'codeial / profile'
+    });
+}
+module.exports.sign_out = function(req, res){
+    req.logout();
+        return res.redirect('/');
+}
 module.exports.create = function(req, res){
     console.log("req reached the controller");
     if(req.body.password != req.body.confirm_password)
@@ -43,5 +58,5 @@ module.exports.create = function(req, res){
 };
 
 module.exports.create_session = function(req, res){
-    // to do
+    return res.redirect('/');
 };
