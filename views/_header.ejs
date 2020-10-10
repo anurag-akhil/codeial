@@ -1,9 +1,11 @@
 <header>
-    this is header section
-    <% if(locals.user){ %>
-        <a href="/users/sign-out">sign-out</a>
-    <% } else{ %>
-        <a href="/users/sign-in">sign-in</a>
-        <a href="/users/sign-up">sign-up</a>
-    <%}%>
+    <div id="logo">codeial</div>
+    <div id="session">
+            <% if(locals.user){ %>
+                <li  id="sign-out"><a href="/users/sign-out">sign-out</a></li>
+            <% } else{ %>
+                <li><a href="/users/sign-in">sign-in</a></li>
+                <li><a href="/users/sign-up">sign-up</a></li>
+            <%}%>
+    </div>
 </header>

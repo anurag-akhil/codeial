@@ -9,10 +9,19 @@ const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');//though we have already called passport in the local strategy file still we have to call passport here
 const mongoStore = require('connect-mongo')(session);
+const sassMiddleware = require('node-sass-middleware');
+
 app.use(expressLayouts);
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 
+app.use(sassMiddleware({
+    src: './assets/scss',
+    dest: './assets/css',
+    debug: true,
+    outputStyle: 'expanded',
+    prefix: '/css'
+}));
 app.use(express.urlencoded());
 app.use(cookieParser());
 app.use(express.static('./assets'));

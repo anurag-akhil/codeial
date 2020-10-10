@@ -1,4 +1,14 @@
-h1{
-    color: red;
-    font-size: 50px;
+#home-container {
+  display: flex;
+  height: 100%;
+}
+
+#home-container #feed-posts {
+  width: 85%;
+  border-right: 1px solid black;
+  height: 100%;
+}
+
+#home-container #user-friends {
+  margin-left: 10px;
 }

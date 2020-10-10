@@ -25,9 +25,25 @@ module.exports.sign_in = function(req, res){
     });
 }
 module.exports.profile = function(req, res){
-    return res.render('profile',{
-        title: 'codeial / profile'
+    user.findById(req.params.id, function(err, user){ 
+        return res.render('profile',{
+            title: 'codeial / profile',
+            profile_user: user
+        });
     });
+}
+module.exports.update = function(req, res){
+    if(req.user.id == req.params.id){
+        user.findByIdAndUpdate(req.params.id, {  
+            name: req.body.name,
+            email: req.body.email
+        }, function(err, user){
+            console.log('updated user is ', user);
+            return res.redirect('back');
+        })
+    }
+    else
+        return res.status(401).send('unathorised');
 }
 module.exports.sign_out = function(req, res){
     req.logout();
