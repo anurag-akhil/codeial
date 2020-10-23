@@ -8,9 +8,14 @@ const db = require('./config/mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');//though we have already called passport in the local strategy file still we have to call passport here
+const passportJWT = require('./config/passport-jwt-strategy');
 const mongoStore = require('connect-mongo')(session);
 const sassMiddleware = require('node-sass-middleware');
+const flash = require('connect-flash');
+const custom = require('./config/flash');
 
+app.use('/uploads', express.static(__dirname + '/uploads'));
+app.use(express.static('./assets'));
 app.use(expressLayouts);
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
@@ -24,7 +29,7 @@ app.use(sassMiddleware({
 }));
 app.use(express.urlencoded());
 app.use(cookieParser());
-app.use(express.static('./assets'));
+//make the upload path available to the browser
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -49,6 +54,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+app.use(flash());
+app.use((custom.setFlash));
 
 app.use('/', require('./routes/index'));
 

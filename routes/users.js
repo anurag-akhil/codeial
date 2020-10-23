@@ -14,6 +14,6 @@ router.post('/update/:id', user.update);
 
 router.post('/create_session', passport.authenticate(
     'local',
-    {faliureRedirect: '/users/sign-in'},
+    {failureRedirect: '/users/sign-in'},
 ),user.create_session);
 module.exports = router;
