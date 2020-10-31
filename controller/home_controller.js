@@ -13,12 +13,14 @@ module.exports.home = async function(req, res){
         });
         
         let users = await User.find({});
+        
         return res.render('home',{
             title: "HOME",
-            post: posts,
+            posts: posts,
             all_users: users
             });            
     }catch(err){
         console.log("error in home controller in home", err);
+        return;
     }
     }

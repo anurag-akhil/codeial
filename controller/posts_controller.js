@@ -2,15 +2,16 @@ const Post = require('../models/posts');
 const Comment = require('../models/comment')
 module.exports.create = async function(req, res){
     try{
-    let post1 = await Post.create({
+    let post = await Post.create({
         content: req.body.content,
         user: req.user._id
     });
     if(req.xhr)
     {
+        post = await post.populate('user', 'name').execPopulate();
         return res.status(200).json({
             data: {
-                post: post1,
+                post: post,
             },
             message: 'Post Created!'
         });
@@ -27,14 +28,18 @@ module.exports.create = async function(req, res){
 module.exports.destroy = async function(req, res){
     try{
     let post = await Post.findById(req.params.id);
-    
+        
+        console.log('post deletion called');
         if(post.user == req.user.id)// to comapre two ids both of them should be strings but typeof(req.user._id) is id not string 
         {                           // mongoose provide the conversion of id to string by writing req.user.id
             post.remove();
+
             await Comment.deleteMany({post: req.params.id});
+            
 
             if(req.xhr)
             {
+                console.log('ajax del called ');
                 return res.status(200).json({
                     data: {
                         post_id: req.params.id
