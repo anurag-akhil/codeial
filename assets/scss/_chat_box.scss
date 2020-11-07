@@ -1,0 +1,59 @@
+#user-chat-box{
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+    height: 350px;
+    width: 300px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 1px 1px lightgrey;
+
+    #message-list{
+        list-style: none;
+        height: 90%;
+        margin: 0px;
+        padding: 0px;
+        background-color: white;
+        overflow: auto;
+
+        .others{
+            text-align: left;
+            padding: 3px;
+            margin: 15px 0px;
+            
+            span{
+                padding: 10px;
+                background-color: #ffa0a0;
+            }
+        }
+        .mine{
+            text-align: right;
+            padding: 3px;
+            margin: 15px 0px;
+
+            span{
+                padding: 10px;
+                background-color:#a0dcff;
+            }
+        }
+    }
+    #message-box{
+        height: 10%;
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        #message{
+            height: 100%;
+            width: 80%;
+            display: inline-block;
+            margin: 0px;
+        }
+        #sub{
+            height: 100%;
+            width: 20%;
+            display: inline-block;
+            margin:0px;
+            border: none;
+            background-color: rgb(7, 248, 7);
+        }
+    }
+} 

@@ -1,5 +1,7 @@
 const Post = require('../models/posts');
-const Comment = require('../models/comment')
+const Comment = require('../models/comment');
+const Like = require('../models/like');
+
 module.exports.create = async function(req, res){
     try{
     let post = await Post.create({
@@ -32,6 +34,10 @@ module.exports.destroy = async function(req, res){
         console.log('post deletion called');
         if(post.user == req.user.id)// to comapre two ids both of them should be strings but typeof(req.user._id) is id not string 
         {                           // mongoose provide the conversion of id to string by writing req.user.id
+
+            await Like.deleteMany({likeable: post, onModel:'Post'});
+            await Like.deleteMany({_id: {$in: post.comments}});
+
             post.remove();
 
             await Comment.deleteMany({post: req.params.id});

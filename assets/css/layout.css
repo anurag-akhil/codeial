@@ -1,9 +1,6 @@
 body {
   background-color: #e4e4e4;
   margin: 0;
-  text-align: left;
-}
-
-body main {
-  min-height: 100%;
-}
+  text-align: left; }
+  body main {
+    min-height: 100%; }
