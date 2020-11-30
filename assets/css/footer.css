@@ -1,22 +1,19 @@
-footer{
-    width: 100%;
-    height: 50px;
-    background-color: rgb(125, 125, 125);
-}
-#copyright{
-    display: inline;
-    color: white;
-    text-transform: capitalize;
-    margin: 0;
-    margin-right: 5px;
-}
-#links{
-    display: inline-block;
-}
-#links p{
-    margin: 0;
-}
-#links p a{
-    color: white;
-    text-decoration: none;
-}
+footer {
+  width: 100%;
+  height: 50px;
+  background-color: #7d7d7d; }
+
+#copyright {
+  display: inline;
+  color: white;
+  text-transform: capitalize;
+  margin: 0;
+  margin-right: 5px; }
+
+#links {
+  display: inline-block; }
+  #links p {
+    margin: 0; }
+    #links p a {
+      color: white;
+      text-decoration: none; }
